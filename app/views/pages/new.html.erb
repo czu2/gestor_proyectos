@@ -1,0 +1,34 @@
+<h1>Nuevo Proyecto</h1>
+
+<%= form_with(model: proyecto, id:'create', local: true) do |f| %>
+
+    <div>
+        <%= f.label :nombre %>
+        <%= f.text_field :nombre %>
+    </div>
+
+    <div>
+        <%= f.label :descripcion %>
+        <%= f.text_field :descripcion %>
+    </div>
+
+    <div>
+        <%= f.label :fecha_comienzo %>
+        <%= f.text_field :fecha_comienzo %>
+    </div>
+
+    <div>
+        <%= f.label :fecha_termino %>
+        <%= f.text_field :fecha_termino %>
+    </div>
+
+    <div>
+        <%= f.label :estado %>
+        <%= f.text_field :estado %>
+    </div>
+
+    <div>
+        <%= f.submit %>
+    </div>
+
+<% end %>

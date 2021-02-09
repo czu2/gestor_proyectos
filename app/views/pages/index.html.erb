@@ -1,0 +1,17 @@
+<h1>Dashboard</h1>
+
+<%= link_to 'Nuevo Proyecto', pages_new_path%>
+
+<%= form_tag(pages_index_path, method: :get) do %>
+    <%= text_field_tag :q %>
+    <%= submit_tag %>
+<% end %><br><br>
+
+
+<% @proyectos.each do |proy| %>
+    <%= proy.nombre %><br>
+    <%= proy.descripcion %><br>
+    <%= proy.estado %><br>
+    <%= proy.fecha_comienzo %><br>
+    <%= proy.fecha_termino %><br><br>
+<% end %>
