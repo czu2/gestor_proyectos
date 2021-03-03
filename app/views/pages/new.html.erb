@@ -1,34 +1,38 @@
-<h1>Nuevo Proyecto</h1>
+<h1 class="text-center p-3">Nuevo Proyecto</h1>
 
-<%= form_with(model: proyecto, id:'create', local: true) do |f| %>
+<div class="container bg-light p-5 border rounded">
+    <%= form_with(url: pages_create_path, id:'create', local: true) do |f| %>
 
-    <div>
-        <%= f.label :nombre %>
-        <%= f.text_field :nombre %>
-    </div>
+        <form>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Nombre Proyecto</label><br>
+                <%= f.text_field :nombre %>
+            </div>
 
-    <div>
-        <%= f.label :descripcion %>
-        <%= f.text_field :descripcion %>
-    </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Descripción Proyecto</label><br>
+                <%= f.text_field :descripcion %>
+            </div>
 
-    <div>
-        <%= f.label :fecha_comienzo %>
-        <%= f.text_field :fecha_comienzo %>
-    </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Fecha Inicio</label><br>
+                <%= f.date_field :fecha_comienzo %>
+            </div>
 
-    <div>
-        <%= f.label :fecha_termino %>
-        <%= f.text_field :fecha_termino %>
-    </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Fecha Término</label><br>
+                <%= f.date_field :fecha_termino %>
+            </div>
 
-    <div>
-        <%= f.label :estado %>
-        <%= f.text_field :estado %>
-    </div>
+            <div class="form-group mb-5">
+                <label for="exampleFormControlSelect1">Estado Proyecto</label><br>
+                <%= select_tag :estado, options_for_select(["Propuesta","En Progreso","Terminado"], "Seleccione") %>
+            </div>
 
-    <div>
-        <%= f.submit %>
-    </div>
+            <div>
+                <%= f.submit 'Crear Proyecto' %>
+            </div>
 
-<% end %>
+        </form>
+    <% end %>
+</div>

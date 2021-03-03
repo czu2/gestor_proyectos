@@ -1,17 +1,49 @@
-<h1>Dashboard</h1>
+<div class="container">
+    <h1 class="text-center p-3">Proyectos</h1>
+    <h6 class="text-center text-info p-2"><%= notice %></h6>
 
-<%= link_to 'Nuevo Proyecto', pages_new_path%>
+    <div class="bg-light border rounded ml-5 mr-4 mb-3" style="height: 60px">
+        <div class="row m-3">
+            <div>
+                <small class="mr-2">Estado:</small>
+            </div>
+            <div>
+                <%= form_tag(pages_index_path, method: :get) do %>
+                    <%= select_tag :q, options_for_select([["Todos",''],["Propuesta",'Propuesta'],["En Progreso",'Progreso'],["Terminado",'Terminado']]) %>
+                    <%= submit_tag 'Filtrar' %>
+                <% end %><br><br>
+            </div>    
+        </div>
+    </div>
 
-<%= form_tag(pages_index_path, method: :get) do %>
-    <%= text_field_tag :q %>
-    <%= submit_tag %>
-<% end %><br><br>
+    <% @proyectos.each do |proy| %>
 
+        <div class="list-group">
+            <div class="list-group-item list-group-item-action bg-light m-2">
+                <div class="d-flex justify-content-between">
+                    <h5 class="text-primary"> <%= proy.nombre %> </h5>
+                    <h6 class="text-danger"><%= proy.estado %></h6>
+                </div>
 
-<% @proyectos.each do |proy| %>
-    <%= proy.nombre %><br>
-    <%= proy.descripcion %><br>
-    <%= proy.estado %><br>
-    <%= proy.fecha_comienzo %><br>
-    <%= proy.fecha_termino %><br><br>
-<% end %>
+                <hr>
+                <small class="mb-1 bold">Detalle:</small>
+                <p class="mb-1"> <%= proy.descripcion %> </p>
+
+               <div class="row card-footer border ml-0 mr-1">
+                    <small class="text-muted mr-3"> Fecha Creación: </small>
+                    <small class="mb-1"> <%= proy.created_at %> </small>
+                </div>
+                <div class="row card-footer border ml-0 mr-1">
+                    <small class="text-muted mr-4"> Fecha Inicio: </small>
+                    <small> <%= proy.fecha_comienzo %> </small>
+                </div>
+                <div class="row card-footer border ml-0 mr-1">
+                    <small class="text-muted mr-3"> Fecha Término: </small>
+                    <small class="mb-1"> <%= proy.fecha_termino %> </small>
+                </div>
+            </div>
+        </div>
+
+    <% end %>
+
+</div>
